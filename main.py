@@ -481,8 +481,8 @@ def main() -> None:
     application.add_handler(CommandHandler("pricechat", pricechat))
 
     # Handle members joining/leaving chats.
-    application.add_handler(ChatMemberHandler(
-        greet_chat_members, ChatMemberHandler.CHAT_MEMBER))
+    # application.add_handler(ChatMemberHandler(
+    #    greet_chat_members, ChatMemberHandler.CHAT_MEMBER))
 
     # Run the bot until the user presses Ctrl-C
     # We pass 'allowed_updates' handle *all* updates including `chat_member` updates
