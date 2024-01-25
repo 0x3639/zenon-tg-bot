@@ -21,20 +21,19 @@ This bot is developed to use in Zenon Network Telegram channels.
 - Use /set_commands command
 - Use the command list below, send them in same chat message
 
-
 buy - Buy $ZNN token <br>
-nodes - List of Public Nodes  <br>
-wallets - Download s y r i u s wallet  <br>
-p2p - How to p2p swap in syrius  <br>
-decks - Investor Decks  <br>
-trackers - Telegram Trackers  <br>
-explorers - Blockchain Explorer  <br>
-chart - Price Chart  <br>
-whitepaper - Download Whitepaper  <br>
-marketing - Performance Marketing Links  <br>
-links - Important Links  <br>
 bridge - Bridge Command  <br>
-github - Github Repositories  <br>
 ca - Ethereum Contract Address  <br>
+chart - Price Chart  <br>
+decks - Investor Decks  <br>
+explorers - Blockchain Explorer  <br>
 forums - List of Forums  <br>
+github - Github Repositories  <br>
+links - Important Links  <br>
+marketing - Performance Marketing Links  <br>
+nodes - List of Public Nodes  <br>
+p2p - How to p2p swap in syrius  <br>
 pricechat - Price Chat  <br>
+trackers - Telegram Trackers  <br>
+wallets - Download s y r i u s wallet  <br>
+whitepaper - Download Whitepaper  <br>
