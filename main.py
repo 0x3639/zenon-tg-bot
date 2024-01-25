@@ -108,23 +108,6 @@ async def track_chats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         context.bot_data.setdefault("channel_ids", set()).discard(chat.id)
 
 
-async def greet_chat_members(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Greets new users in chats"""
-    result = extract_status_change(update.chat_member)
-    if result is None:
-        return
-
-    was_member, is_member = result
-    cause_name = update.chat_member.from_user.mention_html()
-    member_name = update.chat_member.new_chat_member.user.mention_html()
-
-    if not was_member and is_member:
-        await update.effective_chat.send_message(
-            f"{member_name} was added by {cause_name}. Welcome!",
-            parse_mode=ParseMode.HTML,
-        )
-
-
 async def buy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Buy $ZNN token"""
     uniswap_znn = "https://app.uniswap.org/#/swap?inputCurrency=ETH&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3"
