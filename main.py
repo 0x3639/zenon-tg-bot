@@ -108,25 +108,8 @@ async def track_chats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         context.bot_data.setdefault("channel_ids", set()).discard(chat.id)
 
 
-async def show_chats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Shows which chats the bot is in"""
-    user_ids = ", ".join(str(uid)
-                         for uid in context.bot_data.setdefault("user_ids", set()))
-    group_ids = ", ".join(str(gid)
-                          for gid in context.bot_data.setdefault("group_ids", set()))
-    channel_ids = ", ".join(
-        str(cid) for cid in context.bot_data.setdefault("channel_ids", set()))
-    text = (
-        f"@{context.bot.username} is currently in a conversation with the user IDs {user_ids}."
-        f" Moreover it is a member of the groups with IDs {group_ids} "
-        f"and administrator in the channels with IDs {channel_ids}."
-    )
-
-    await update.effective_message.reply_text(text)
-
-
 async def greet_chat_members(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Greets new users in chats and announces when someone leaves"""
+    """Greets new users in chats"""
     result = extract_status_change(update.chat_member)
     if result is None:
         return
@@ -138,11 +121,6 @@ async def greet_chat_members(update: Update, context: ContextTypes.DEFAULT_TYPE)
     if not was_member and is_member:
         await update.effective_chat.send_message(
             f"{member_name} was added by {cause_name}. Welcome!",
-            parse_mode=ParseMode.HTML,
-        )
-    elif was_member and not is_member:
-        await update.effective_chat.send_message(
-            f"{member_name} is no longer with us. Thanks a lot, {cause_name} ...",
             parse_mode=ParseMode.HTML,
         )
 
