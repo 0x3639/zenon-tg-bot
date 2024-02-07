@@ -14,6 +14,7 @@ bot.
 import logging
 from typing import Optional, Tuple
 import os
+import requests
 from dotenv import load_dotenv
 
 from telegram import Chat, ChatMember, ChatMemberUpdated, Update
@@ -454,6 +455,73 @@ async def pricechat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
+async def price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Fetch and display the price of znn, qsr, btc, and eth."""
+    url = "https://api.hc1.tools/price"
+    response = requests.get(url)
+    data = response.json()["data"]
+
+    text = f"""
+    ------------------
+    *ZNN & QSR Price*
+    ------------------
+    ZNN: ${data["znn"]["usd"]}
+    QSR: ${data["qsr"]["usd"]}
+    BTC: ${data["btc"]["usd"]}
+    ETH: ${data["eth"]["usd"]}
+    """
+
+
+async def supply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Fetch and display the supply of znn & qsr"""
+    url = "https://zenonhub.io/api/nom/token/get-by-owner?address=z1qxemdeddedxt0kenxxxxxxxxxxxxxxxxh9amk0"
+    response = requests.get(url)
+    data = response.json()["data"]
+
+    znn_total_supply = data["list"][1]["totalSupply"][:-8]
+    znn_max_supply = data["list"][1]["maxSupply"][:-8]
+    qsr_total_supply = data["list"][0]["totalSupply"][:-8]
+    qsr_max_supply = data["list"][0]["maxSupply"][:-8]
+
+    text = f"""
+    -----------------------
+    *ZNN & QSR Supply*
+    -----------------------
+    ZNN Current Supply: {znn_total_supply}
+    ZNN Max Supply: {znn_max_supply}
+    QSR Current Supply: {qsr_total_supply}
+    QSR Max Supply: {qsr_max_supply}
+    """
+
+
+async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Fetch and display the market cap of znn and qsr."""
+    url = "https://api.hc1.tools/price"
+    response = requests.get(url)
+    price_data = response.json()["data"]
+
+    supply_url = "https://zenonhub.io/api/nom/token/get-by-owner?address=z1qxemdeddedxt0kenxxxxxxxxxxxxxxxxh9amk0"
+    supply_response = requests.get(supply_url)
+    supply_data = supply_response.json()["data"]
+
+    znn_price = float(price_data["znn"]["usd"])
+    qsr_price = float(price_data["qsr"]["usd"])
+
+    znn_total_supply = int(supply_data["list"][1]["totalSupply"]) // 10**8
+    qsr_total_supply = int(supply_data["list"][0]["totalSupply"]) // 10**8
+
+    znn_market_cap = znn_price * znn_total_supply
+    qsr_market_cap = qsr_price * qsr_total_supply
+
+    text = f"""
+    ----------------------
+    *ZNN & QSR Market Cap*
+    ----------------------
+    ZNN: ${znn_market_cap:.2f}
+    QSR: ${qsr_market_cap:.2f}
+    """
+
+
 def main() -> None:
     """Start the bot."""
     # Create the Application and pass it your bot's token.
@@ -479,6 +547,9 @@ def main() -> None:
     application.add_handler(CommandHandler("ca", ca))
     application.add_handler(CommandHandler("forums", forums))
     application.add_handler(CommandHandler("pricechat", pricechat))
+    application.add_handler(CommandHandler("price", price))
+    application.add_handler(CommandHandler("supply", supply))
+    application.add_handler(CommandHandler("mc", mc))
 
     # Handle members joining/leaving chats.
     # application.add_handler(ChatMemberHandler(

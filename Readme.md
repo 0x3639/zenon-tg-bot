@@ -33,6 +33,9 @@ links - Important Links  <br>
 marketing - Performance Marketing Links  <br>
 nodes - List of Public Nodes  <br>
 p2p - How to p2p swap in syrius  <br>
+price - Current price of ZNN & QSR <br>
+supply - Current and max supply <br>
+mc - Market cap of ZNN & QSR <br>
 pricechat - Price Chat  <br>
 trackers - Telegram Trackers  <br>
 wallets - Download s y r i u s wallet  <br>

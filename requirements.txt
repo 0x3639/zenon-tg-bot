@@ -1,0 +1,9 @@
+certifi==2023.7.22
+cffi @ file:///private/tmp/cffi-20230928-4569-10mse72/cffi-1.16.0
+cryptography @ file:///private/tmp/python-cryptography-20230919-6530-1nu01ji/cryptography-41.0.4
+lxml @ file:///private/tmp/python-lxml-20230830-6138-1l0cdh0/lxml-4.9.3
+packaging @ file:///private/tmp/python-packaging-20231001-4936-cb0qrh/packaging-23.2
+pycparser @ file:///private/tmp/pycparser-20230831-5825-v2kl0l/pycparser-2.21
+pytz @ file:///private/tmp/python-pytz-20230905-5904-wboe5m/pytz-2023.3.post1
+PyYAML @ file:///private/tmp/pyyaml-20230717-6270-1iiwi1j/PyYAML-6.0.1
+six==1.16.0
