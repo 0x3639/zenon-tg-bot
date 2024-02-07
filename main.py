@@ -487,10 +487,10 @@ async def supply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     -----------------------
     *ZNN & QSR Supply*
     -----------------------
-    ZNN Current Supply: {znn_total_supply}
-    ZNN Max Supply: {znn_max_supply}
-    QSR Current Supply: {qsr_total_supply}
-    QSR Max Supply: {qsr_max_supply}
+    ZNN Current Supply: {format(znn_total_supply, ',')}
+    ZNN Max Supply: {format(znn_max_supply, ',')}
+    QSR Current Supply: {format(qsr_total_supply, ',')}
+    QSR Max Supply: {format(qsr_max_supply, ',')}
     """
 
 
@@ -517,8 +517,8 @@ async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     ----------------------
     *ZNN & QSR Market Cap*
     ----------------------
-    ZNN: ${znn_market_cap:.2f}
-    QSR: ${qsr_market_cap:.2f}
+    ZNN: ${format(znn_market_cap, ',.2f')}
+    QSR: ${format(qsr_market_cap, ',.2f')}
     """
 
 
