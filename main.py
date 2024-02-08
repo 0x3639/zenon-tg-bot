@@ -406,17 +406,19 @@ async def ca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "https://app.uniswap.org/swap?inputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3&amp;outputCurrency=ETH",
         "https://etherscan.io/address/0x96546AFE4a21515A3a30CD3fd64A70eB478DC174",
         "https://app.uniswap.org/swap?inputCurrency=0x96546AFE4a21515A3a30CD3fd64A70eB478DC174&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
-        "https://www.zenon.org/en/phases/1/tokens/znn",
-        "https://www.zenon.org/en/phases/1/tokens/qsr",
+        "https://ask.zenon.wiki/questions/D1b3/what-is-znn-and-what-is-it-used-for-in-zenon-network",
+        "https://ask.zenon.wiki/questions/D123/what-is-qsr-and-what-is-it-used-for-in-zenon-network",
     ]
     text = f"""
 ---------------------
 *Contract Addresses*
 ---------------------
-*$wZNN - Ethereum Contract Addresses*
-[wZNN Token | 0xb2e96a63479C2Edd2FD62b382c89D5CA79f572d3]({urls[0]})
+*Ethereum Contract Addresses*
+[wZNN | 0xb2e96a63479C2Edd2FD62b382c89D5CA79f572d3]({urls[0]})
+[wQSR | 0x96546AFE4a21515A3a30CD3fd64A70eB478DC174]({urls[2]})
+
+*Buy wZNN or wQSR on Uniswap*
 [Buy wZNN on Uniswap]({urls[1]})
-[wQSR Token | 0x96546AFE4a21515A3a30CD3fd64A70eB478DC174]({urls[2]})
 [Buy wQSR on Uniswap]({urls[3]})
 
 *Learn More*
@@ -461,37 +463,62 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     response = requests.get(url)
     data = response.json()["data"]
 
+    urls = [
+        "https://app.uniswap.org/swap?inputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3&amp;outputCurrency=ETH",
+        "https://app.uniswap.org/swap?inputCurrency=0x96546AFE4a21515A3a30CD3fd64A70eB478DC174&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
     text = f"""
-    ------------------
-    *ZNN & QSR Price*
-    ------------------
-    ZNN: ${data["znn"]["usd"]}
-    QSR: ${data["qsr"]["usd"]}
-    BTC: ${data["btc"]["usd"]}
-    ETH: ${data["eth"]["usd"]}
-    """
+------------------
+*ZNN & QSR Price*
+------------------
+ZNN: ${data["znn"]["usd"]}
+QSR: ${data["qsr"]["usd"]}
+BTC: ${data["btc"]["usd"]}
+ETH: ${data["eth"]["usd"]}
+
+*Buy wZNN|wQSR*
+[Buy wZNN]({urls[0]}) on Uniswap
+[Buy wQSR]({urls[1]}) on Uniswap 
+
+"""
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 async def supply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Fetch and display the supply of znn & qsr"""
+    logging.info("Supply function called")
+
+
     url = "https://zenonhub.io/api/nom/token/get-by-owner?address=z1qxemdeddedxt0kenxxxxxxxxxxxxxxxxh9amk0"
     response = requests.get(url)
     data = response.json()["data"]
 
-    znn_total_supply = data["list"][1]["totalSupply"][:-8]
-    znn_max_supply = data["list"][1]["maxSupply"][:-8]
-    qsr_total_supply = data["list"][0]["totalSupply"][:-8]
-    qsr_max_supply = data["list"][0]["maxSupply"][:-8]
+    znn_total_supply = int(data["list"][1]["totalSupply"][:-8])
+    znn_max_supply = int(data["list"][1]["maxSupply"][:-8])
+    qsr_total_supply = int(data["list"][0]["totalSupply"][:-8])
+    qsr_max_supply = int(data["list"][0]["maxSupply"][:-8])
+
+    urls = [
+        "https://ask.zenon.wiki/questions/D1q2/what-are-the-inflation-rates-for-znn-and-qsr-tokens-and-are-there-upcoming-vesting-releases-to-be-aware-of",
+        "https://ask.zenon.wiki/questions/D1b3/what-is-znn-and-what-is-it-used-for-in-zenon-network",
+        "https://ask.zenon.wiki/questions/D123/what-is-qsr-and-what-is-it-used-for-in-zenon-network"
+    ]
 
     text = f"""
-    -----------------------
-    *ZNN & QSR Supply*
-    -----------------------
-    ZNN Current Supply: {format(znn_total_supply, ',')}
-    ZNN Max Supply: {format(znn_max_supply, ',')}
-    QSR Current Supply: {format(qsr_total_supply, ',')}
-    QSR Max Supply: {format(qsr_max_supply, ',')}
-    """
+---------------------
+*ZNN & QSR Supply*
+---------------------
+ZNN Current Supply: {format(znn_total_supply, ',')}
+ZNN Max Supply: {format(znn_max_supply, ',')}
+QSR Current Supply: {format(qsr_total_supply, ',')}
+QSR Max Supply: {format(qsr_max_supply, ',')}
+
+*Inflation Rates*
+ZNN Inflation: 4,320 ZNN per day
+QSR Inflation: 5,000 QSR per day
+Learn More About [ZNN]({urls[1]}) and [QSR]({urls[2]})
+Learn More about [Inflation Rates & Vesting]({urls[0]})
+"""
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -514,12 +541,13 @@ async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     qsr_market_cap = qsr_price * qsr_total_supply
 
     text = f"""
-    ----------------------
-    *ZNN & QSR Market Cap*
-    ----------------------
-    ZNN: ${format(znn_market_cap, ',.2f')}
-    QSR: ${format(qsr_market_cap, ',.2f')}
-    """
+-------------------------
+*ZNN & QSR Market Cap*
+-------------------------
+ZNN: ${format(znn_market_cap, ',.2f')}
+QSR: ${format(qsr_market_cap, ',.2f')}
+"""
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 def main() -> None:
