@@ -21,8 +21,8 @@ This bot is developed to use in Zenon Network Telegram channels.
 - Use /set_commands command
 - Use the command list below, send them in same chat message
 
-buy - Buy $ZNN token <br>
 bridge - Bridge Command  <br>
+buy - Buy $ZNN token <br>
 ca - Ethereum Contract Address  <br>
 chart - Price Chart  <br>
 decks - Investor Decks  <br>
@@ -31,12 +31,12 @@ forums - List of Forums  <br>
 github - Github Repositories  <br>
 links - Important Links  <br>
 marketing - Performance Marketing Links  <br>
+mc - Market cap of ZNN & QSR <br>
 nodes - List of Public Nodes  <br>
 p2p - How to p2p swap in syrius  <br>
 price - Current price of ZNN & QSR <br>
-supply - Current and max supply <br>
-mc - Market cap of ZNN & QSR <br>
 pricechat - Price Chat  <br>
+supply - Current and max supply <br>
 trackers - Telegram Trackers  <br>
 wallets - Download s y r i u s wallet  <br>
 whitepaper - Download Whitepaper  <br>

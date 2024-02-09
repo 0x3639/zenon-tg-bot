@@ -477,14 +477,20 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "https://app.thorswap.finance/swap/BTC.BTC_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0",
         "https://app.thorswap.finance/swap/ETH.USDT-0xdac17f958d2ee523a2206206994597c13d831ec7_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0"
     ]
+    
+    znn_price = "${:,.2f}".format(data["znn"]["usd"])
+    qsr_price = "${:.3f}".format(data["qsr"]["usd"])
+    btc_price = "${:,.0f}".format(data["btc"]["usd"])
+    eth_price = "${:,.0f}".format(data["eth"]["usd"])
+
     text = f"""
 ------------------
 *ZNN & QSR Price*
 ------------------
-ZNN: ${data["znn"]["usd"]}
-QSR: ${data["qsr"]["usd"]}
-BTC: ${data["btc"]["usd"]}
-ETH: ${data["eth"]["usd"]}
+ZNN: {znn_price}
+QSR: {qsr_price}
+BTC: {btc_price}
+ETH: {eth_price}
 
 *Buy wZNN | wQSR*
 [Buy wZNN]({urls[0]}) on Uniswap
@@ -528,7 +534,7 @@ QSR Max Supply: {format(qsr_max_supply, ',')}
 *Inflation Rates*
 ZNN Inflation: 4,320 ZNN per day
 QSR Inflation: 5,000 QSR per day
-Learn More About [ZNN]({urls[1]}) and [QSR]({urls[2]})
+Learn More About [ZNN]({urls[1]}) or [QSR]({urls[2]})
 Learn More about [Inflation Rates & Vesting]({urls[0]})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
