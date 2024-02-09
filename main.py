@@ -113,12 +113,19 @@ async def buy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Buy $ZNN token"""
     uniswap_znn = "https://app.uniswap.org/#/swap?inputCurrency=ETH&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3"
     uniswap_qsr = "https://app.uniswap.org/#/swap?inputCurrency=0x96546AFE4a21515A3a30CD3fd64A70eB478DC174&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3"
+    thorchain_znn_eth = "https://app.thorswap.finance/swap/ETH.ETH_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0"
+    thorchain_znn_btc = "https://app.thorswap.finance/swap/BTC.BTC_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0"
+    thorchain_znn_usdt = "https://app.thorswap.finance/swap/ETH.USDT-0xdac17f958d2ee523a2206206994597c13d831ec7_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0"
+    
     text = f"""
 ---------------------
 *Buy $ZNN or $QSR*
 ---------------------
 [ETH <> wZNN on Uniswap]({uniswap_znn})
 [wQSR <> wZNN on Uniswap]({uniswap_qsr})
+[ETH <> wZNN on THORChain]({uniswap_znn})
+[BTC <> wZNN on THORChain]({uniswap_znn})
+[USDT <> wZNN on THORChain]({uniswap_znn})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -466,6 +473,10 @@ async def price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     urls = [
         "https://app.uniswap.org/swap?inputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3&amp;outputCurrency=ETH",
         "https://app.uniswap.org/swap?inputCurrency=0x96546AFE4a21515A3a30CD3fd64A70eB478DC174&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
+        "https://app.thorswap.finance/swap/ETH.ETH_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0",
+        "https://app.thorswap.finance/swap/BTC.BTC_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0",
+        "https://app.thorswap.finance/swap/ETH.USDT-0xdac17f958d2ee523a2206206994597c13d831ec7_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0"
+    ]
     text = f"""
 ------------------
 *ZNN & QSR Price*
@@ -475,18 +486,20 @@ QSR: ${data["qsr"]["usd"]}
 BTC: ${data["btc"]["usd"]}
 ETH: ${data["eth"]["usd"]}
 
-*Buy wZNN|wQSR*
+*Buy wZNN | wQSR*
 [Buy wZNN]({urls[0]}) on Uniswap
 [Buy wQSR]({urls[1]}) on Uniswap 
-
+[Buy wZNN]({urls[2]}) on THORChain
 """
-    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-
+    
+    if update.message is not None:
+        await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+    else:
+        logging.warning("Update does not contain a message")
 
 async def supply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Fetch and display the supply of znn & qsr"""
     logging.info("Supply function called")
-
 
     url = "https://zenonhub.io/api/nom/token/get-by-owner?address=z1qxemdeddedxt0kenxxxxxxxxxxxxxxxxh9amk0"
     response = requests.get(url)
