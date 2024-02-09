@@ -123,9 +123,9 @@ async def buy(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 ---------------------
 [ETH <> wZNN on Uniswap]({uniswap_znn})
 [wQSR <> wZNN on Uniswap]({uniswap_qsr})
-[ETH <> wZNN on THORChain]({uniswap_znn})
-[BTC <> wZNN on THORChain]({uniswap_znn})
-[USDT <> wZNN on THORChain]({uniswap_znn})
+[ETH <> wZNN on THORChain]({thorchain_znn_eth})
+[BTC <> wZNN on THORChain]({thorchain_znn_btc})
+[USDT <> wZNN on THORChain]({thorchain_znn_usdt})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -410,11 +410,12 @@ async def ca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Ethereum Contract Address"""
     urls = [
         "https://etherscan.io/address/0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
-        "https://app.uniswap.org/swap?inputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3&amp;outputCurrency=ETH",
         "https://etherscan.io/address/0x96546AFE4a21515A3a30CD3fd64A70eB478DC174",
+        "https://app.uniswap.org/swap?inputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3&amp;outputCurrency=ETH",
         "https://app.uniswap.org/swap?inputCurrency=0x96546AFE4a21515A3a30CD3fd64A70eB478DC174&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
         "https://ask.zenon.wiki/questions/D1b3/what-is-znn-and-what-is-it-used-for-in-zenon-network",
         "https://ask.zenon.wiki/questions/D123/what-is-qsr-and-what-is-it-used-for-in-zenon-network",
+        "https://app.thorswap.finance/swap/BTC.BTC_ETH.wZNN-0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3?sellAmount=0",
     ]
     text = f"""
 ---------------------
@@ -422,11 +423,12 @@ async def ca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 ---------------------
 *Ethereum Contract Addresses*
 [wZNN | 0xb2e96a63479C2Edd2FD62b382c89D5CA79f572d3]({urls[0]})
-[wQSR | 0x96546AFE4a21515A3a30CD3fd64A70eB478DC174]({urls[2]})
+[wQSR | 0x96546AFE4a21515A3a30CD3fd64A70eB478DC174]({urls[1]})
 
-*Buy wZNN or wQSR on Uniswap*
-[Buy wZNN on Uniswap]({urls[1]})
-[Buy wQSR on Uniswap]({urls[3]})
+*Buy wZNN or wQSR*
+[Buy wZNN]({urls[2]}) on Uniswap
+[Buy wQSR]({urls[3]}) on Uniswap
+[Buy wZNN]({urls[6]}) on THORChain
 
 *Learn More*
 [Learn About $ZNN]({urls[4]})
@@ -492,7 +494,7 @@ QSR: {qsr_price}
 BTC: {btc_price}
 ETH: {eth_price}
 
-*Buy wZNN | wQSR*
+*Buy wZNN or wQSR*
 [Buy wZNN]({urls[0]}) on Uniswap
 [Buy wQSR]({urls[1]}) on Uniswap 
 [Buy wZNN]({urls[2]}) on THORChain
