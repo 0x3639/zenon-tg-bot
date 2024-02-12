@@ -36,6 +36,8 @@ nodes - List of Public Nodes  <br>
 p2p - How to p2p swap in syrius  <br>
 price - Current price of ZNN & QSR <br>
 pricechat - Price Chat  <br>
+roadmap - Development Roadmap <br>
+staking - Staking & Delegating <br>
 supply - Current and max supply <br>
 trackers - Telegram Trackers  <br>
 wallets - Download s y r i u s wallet  <br>
