@@ -575,9 +575,9 @@ async def staking(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """How to Stake & Delegate"""
     url = "https://ask.zenon.wiki/questions/D1Q1/what-is-the-difference-between-delegating-and-staking"
     text = f"""
----------------------
+-----------------------
 *Staking & Delegating*
----------------------
+-----------------------
 [Staking & Delegating]({url})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
@@ -590,7 +590,7 @@ async def roadmap(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 ---------
 *Roadmap*
 ---------
-[Development Roadmap({url})
+[Development Roadmap]({url})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
