@@ -562,11 +562,35 @@ async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     qsr_market_cap = qsr_price * qsr_total_supply
 
     text = f"""
--------------------------
+-----------------------
 *ZNN & QSR Market Cap*
--------------------------
+-----------------------
 ZNN: ${format(znn_market_cap, ',.2f')}
 QSR: ${format(qsr_market_cap, ',.2f')}
+"""
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
+
+async def staking(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """How to Stake & Delegate"""
+    url = "https://ask.zenon.wiki/questions/D1Q1/what-is-the-difference-between-delegating-and-staking"
+    text = f"""
+---------------------
+*Staking & Delegating*
+---------------------
+[Staking & Delegating]({url})
+"""
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
+
+async def roadmap(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Development Roadmap"""
+    url = "https://forum.hypercore.one/t/zenon-network-roadmap/337"
+    text = f"""
+---------
+*Roadmap*
+---------
+[Development Roadmap({url})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -599,6 +623,8 @@ def main() -> None:
     application.add_handler(CommandHandler("price", price))
     application.add_handler(CommandHandler("supply", supply))
     application.add_handler(CommandHandler("mc", mc))
+    application.add_handler(CommandHandler("staking", staking))
+    application.add_handler(CommandHandler("roadmap", roadmap))
 
     # Handle members joining/leaving chats.
     # application.add_handler(ChatMemberHandler(
