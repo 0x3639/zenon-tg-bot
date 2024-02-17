@@ -175,7 +175,8 @@ async def nodes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """List of Public Nodes"""
     urls = [
         "wss://my.hc1node.com:35998",
-        "wss://node.zenonhub.io:35998"
+        "wss://node.zenonhub.io:35998",
+        "wss://node.atsocy.com:35998",
     ]
     text = f"""
 ---------------------
@@ -183,6 +184,7 @@ async def nodes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 ---------------------
 [{urls[0]}]({urls[0]})
 [{urls[1]}]({urls[1]})
+[{urls[2]}]({urls[2]})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -587,9 +589,9 @@ async def roadmap(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Development Roadmap"""
     url = "https://forum.hypercore.one/t/zenon-network-roadmap/337"
     text = f"""
----------
+----------
 *Roadmap*
----------
+----------
 [Development Roadmap]({url})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
