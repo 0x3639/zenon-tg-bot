@@ -191,7 +191,7 @@ async def nodes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def wallets(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Download s y r i u s wallet"""
-    url = "https://github.com/zenon-network/syrius/releases/tag/v0.1.0-alphanet"
+    url = "https://github.com/zenon-network/syrius/releases/tag/v0.2.0-alphanet"
     text = f"""
 ---------------------
 *Link to Wallet*
