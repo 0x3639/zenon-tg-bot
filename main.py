@@ -16,6 +16,7 @@ from typing import Optional, Tuple
 import os
 import requests
 from dotenv import load_dotenv
+import random
 
 from telegram import Chat, ChatMember, ChatMemberUpdated, Update
 from telegram.constants import ParseMode
@@ -170,14 +171,24 @@ Forums
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
-
+# Assuming Update and ContextTypes are already defined in your context
 async def nodes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """List of Public Nodes"""
-    urls = [
+    # Two nodes to display randomly
+    random_urls = [
         "wss://my.hc1node.com:35998",
         "wss://node.zenonhub.io:35998",
-        "wss://node.atsocy.com:35998",
     ]
+    
+    # Shuffle the two URLs
+    random.shuffle(random_urls)
+    
+    # The third node, always in the third slot
+    fixed_url = "wss://node.atsocy.com:35998"
+    
+    # Combine the shuffled list with the fixed URL
+    urls = random_urls + [fixed_url]
+    
     text = f"""
 ---------------------
 *Public Nodes*
@@ -186,8 +197,8 @@ async def nodes(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 [{urls[1]}]({urls[1]})
 [{urls[2]}]({urls[2]})
 """
+    # Assuming `update.message.reply_text` and `ParseMode.MARKDOWN` are valid in your bot framework
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-
 
 async def wallets(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Download s y r i u s wallet"""
