@@ -135,14 +135,13 @@ async def websites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """List Project Websites"""
     urls = [
         "https://zenon.network",
-        "https://zenon.org",
-        "https://zenon.tools",
         "https://zenon.info",
+        "https://zenonhub.io",
+        "https://zenon.tools",
         "https://ask.zenon.wiki",
         "https://my.znn.link/",
-        "https://zenonhub.io",
-        "https://attribute.zenon.org",
-        "https://explorer.zenon.org",
+        "https://zenon.org",
+        "https://zenonhub.io/explorer",
         "https://explorer.zenon.info",
         "https://forum.zenon.org",
         "https://forum.hypercore.one",
@@ -159,15 +158,14 @@ Websites
 [{urls[4]}]({urls[4]})
 [{urls[5]}]({urls[5]})
 [{urls[6]}]({urls[6]})
-[{urls[7]}]({urls[7]})
 
 Explorers
+[{urls[7]}]({urls[7]})
 [{urls[8]}]({urls[8]})
-[{urls[9]}]({urls[9]})
 
 Forums
 [{urls[10]}]({urls[10]})
-[{urls[11]}]({urls[11]})
+[{urls[9]}]({urls[9]})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
