@@ -266,7 +266,6 @@ async def explorers(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Blockchain Explorer"""
     urls = [
         "https://zenonhub.io/explorer",
-        "https://explorer.zenon.org/",
         "https://explorer.zenon.info/",
         "https://explorer.zenon.network/",
     ]
@@ -277,7 +276,6 @@ async def explorers(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 [{urls[0]}]({urls[0]})
 [{urls[1]}]({urls[1]})
 [{urls[2]}]({urls[2]})
-[{urls[3]}]({urls[3]})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -328,10 +326,10 @@ async def links(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Important Links"""
     urls = [
         "https://zenon.network/",
-        "https://zenon.org/",
         "https://zenon.tools/",
         "https://zenonhub.io/",
         "https://zenon.info/",
+        "https://zenon.org/",
         "https://bridge.mainnet.zenon.community/",
         "https://status.bridge.zenon.community/",
         "https://app.uniswap.org/#/swap?inputCurrency=ETH&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
@@ -345,10 +343,10 @@ async def links(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 *Important Links*
 ---------------------
 [zenon.network]({urls[0]})
-[zenon.org]({urls[1]})
-[zenon.tools]({urls[2]})
-[zenonhub.io]({urls[3]})
-[zenon.info]({urls[4]})
+[zenon.tools]({urls[1]})
+[zenonhub.io]({urls[2]})
+[zenon.info]({urls[3]})
+[zenon.org]({urls[4]})
 [Bridge (ZNN <-> wZNN)]({urls[5]})
 [Bridge Status]({urls[6]})
 [Buy $ZNN]({urls[7]})
