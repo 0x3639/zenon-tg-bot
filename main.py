@@ -142,7 +142,7 @@ async def websites(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "https://my.znn.link/",
         "https://zenon.org",
         "https://zenonhub.io/explorer",
-        "https://explorer.zenon.info",
+        "https://explorer.zenon.network",
         "https://forum.zenon.org",
         "https://forum.hypercore.one",
     ]
@@ -266,7 +266,6 @@ async def explorers(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Blockchain Explorer"""
     urls = [
         "https://zenonhub.io/explorer",
-        "https://explorer.zenon.info/",
         "https://explorer.zenon.network/",
     ]
     text = f"""
@@ -275,7 +274,6 @@ async def explorers(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 ---------------------
 [{urls[0]}]({urls[0]})
 [{urls[1]}]({urls[1]})
-[{urls[2]}]({urls[2]})
 """
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
