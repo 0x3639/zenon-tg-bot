@@ -329,7 +329,7 @@ async def links(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "https://zenon.info/",
         "https://zenon.org/",
         "https://bridge.mainnet.zenon.community/",
-        "https://status.bridge.zenon.community/",
+        "https://explorer.zenon.info/bridge/",
         "https://app.uniswap.org/#/swap?inputCurrency=ETH&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
         "https://forum.zenon.org",
         "https://forum.hypercore.one",
@@ -360,7 +360,7 @@ async def bridge(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Bridge Command"""
     urls = [
         "https://bridge.mainnet.zenon.community/?referral=2f5b37014d6f3e26323c33670233014a6f2777263876255223040a3b3e76633b753b19281b123c36",
-        "https://status.bridge.zenon.community/",
+        "https://explorer.zenon.info/bridge/",
         "https://affiliate.zenon.community/",
         "https://youtu.be/Ui2x1IECwys",
         "https://forum.hypercore.one/t/steps-to-troubleshoot-the-wznn-znn-bridge/237",
@@ -475,7 +475,7 @@ async def pricechat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Fetch and display the price of znn, qsr, btc, and eth."""
-    url = "https://api.hc1.tools/price"
+    url = "https://api.zenon.info/price"
     response = requests.get(url)
     data = response.json()["data"]
 
@@ -551,7 +551,7 @@ Learn More about [Inflation Rates & Vesting]({urls[0]})
 
 async def mc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Fetch and display the market cap of znn and qsr."""
-    url = "https://api.hc1.tools/price"
+    url = "https://api.zenon.info/price"
     response = requests.get(url)
     price_data = response.json()["data"]
 

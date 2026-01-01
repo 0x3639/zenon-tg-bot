@@ -1,0 +1,7 @@
+services:
+  zenon-tg-bot:
+    build: .
+    container_name: zenon-tg-bot
+    restart: unless-stopped
+    environment:
+      - TOKEN=${TOKEN}
