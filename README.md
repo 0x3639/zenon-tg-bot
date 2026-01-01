@@ -57,7 +57,6 @@ explorers - Blockchain Explorer
 forums - List of Forums
 github - Github Repositories
 links - Important Links
-marketing - Performance Marketing Links
 mc - Market cap of ZNN & QSR
 nodes - List of Public Nodes
 p2p - How to p2p swap in syrius

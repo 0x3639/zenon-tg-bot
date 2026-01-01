@@ -302,24 +302,6 @@ async def whitepaper(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
-async def marketing(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Performance Marketing Links"""
-    urls = [
-        "https://attribute.zenon.org",
-        "https://attribute.zenon.org/link-builder",
-        "https://support.zenon.org/en/collections/5920226-marketing"
-    ]
-    text = f"""
----------------------
-*Performance Marketing*
----------------------
-[{urls[0]}]({urls[0]})
-[{urls[1]}]({urls[1]})
-[{urls[2]}]({urls[2]})
-"""
-    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-
-
 async def links(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Important Links"""
     urls = [
@@ -620,7 +602,6 @@ def main() -> None:
     application.add_handler(CommandHandler("explorers", explorers))
     application.add_handler(CommandHandler("chart", chart))
     application.add_handler(CommandHandler("whitepaper", whitepaper))
-    application.add_handler(CommandHandler("marketing", marketing))
     application.add_handler(CommandHandler("links", links))
     application.add_handler(CommandHandler("bridge", bridge))
     application.add_handler(CommandHandler("github", github))
