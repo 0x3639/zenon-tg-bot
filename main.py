@@ -315,7 +315,7 @@ async def links(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "https://app.uniswap.org/#/swap?inputCurrency=ETH&amp;outputCurrency=0xb2e96a63479c2edd2fd62b382c89d5ca79f572d3",
         "https://forum.zenon.org",
         "https://forum.hypercore.one",
-        "https://github.com/zenon-network/syrius/releases/tag/v0.1.0-alphanet",
+        "https://github.com/zenon-network/syrius/releases",
         "https://www.dextools.io/app/en/ether/pair-explorer/0xdac866a3796f85cb84a914d98faec052e3b5596d"
     ]
     text = f"""
